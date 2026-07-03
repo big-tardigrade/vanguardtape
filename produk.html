@@ -562,6 +562,20 @@ footer .f-brand .brand .wm small{display:block}
 }
 
 .rs-tile img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+
+/* ===== image lightbox ===== */
+.imgpop{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:rgba(8,8,10,.93);backdrop-filter:blur(6px);padding:24px;cursor:zoom-out;opacity:0;transition:opacity .2s}
+.imgpop.on{display:flex;opacity:1}
+.imgpop img{max-width:min(1100px,94vw);max-height:86vh;width:auto;height:auto;border-radius:14px;box-shadow:0 40px 100px -20px rgba(0,0,0,.85);cursor:default}
+.imgpop .ip-cap{position:absolute;left:0;right:0;bottom:20px;text-align:center;color:#fff;font-family:var(--disp);font-size:14px;letter-spacing:.03em;opacity:.92}
+.imgpop .ip-x{position:absolute;top:18px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#fff;display:grid;place-items:center;cursor:pointer;transition:background .15s}
+.imgpop .ip-x:hover{background:rgba(255,255,255,.24)}
+.imgpop .ip-x svg{width:20px;height:20px;stroke:#fff;stroke-width:2.4;fill:none}
+.gtile img,.rs-tile img{cursor:zoom-in}
+/* ==== v10 tweaks ==== */
+/* hide product-photo tags (kept in DOM + alt text so Google still indexes) */
+.rs-cap{display:none}
+
 </style>
 </head>
 <body>
@@ -760,7 +774,7 @@ footer .f-brand .brand .wm small{display:block}
         <a class="f-num" href="#" data-wa data-ctx="manager" data-wa-num="6287777000286"><small>Manajer (kritik &amp; saran)</small>+62 877-7700-0286</a>
       </div>
       <div class="col"><h4>Navigasi</h4><a href="index.html">Home</a><a href="produk.html">Produk</a><a href="portfolio.html">Portfolio</a><a href="tentang.html">Tentang</a><a href="kontak.html">Kontak</a></div>
-      <div class="col"><h4>Kontak Email</h4><a href="mailto:vanguardtape@gmail.com">vanguardtape@gmail.com</a><a href="mailto:info@vanguardtape.com">info@vanguardtape.com</a><h4 style="margin-top:22px">Jam Kerja</h4><p style="margin:0">Senin&ndash;Jumat 08.00&ndash;16.00<br>Sabtu 08.00&ndash;12.00<br>Minggu tutup</p></div>
+      <div class="col"><h4>Kontak Email</h4><a href="mailto:vanguardtape@gmail.com?subject=Pesanan%20Lakban%20Custom%20%E2%80%94%20Vanguard%20Tape&body=Halo%20Vanguard%20Tape%2C%0D%0A%0D%0ASaya%20ingin%20memesan%20lakban%20custom%20cetak%20logo.%20Berikut%20kebutuhan%20saya%3A%0D%0A%0D%0A%E2%80%A2%20Ukuran%20%2F%20lebar%20%3A%20%0D%0A%E2%80%A2%20Warna%20dasar%20%20%20%20%3A%20%0D%0A%E2%80%A2%20Jumlah%20%28dus%29%20%20%20%3A%20%0D%0A%E2%80%A2%20Logo%20%2F%20desain%20%20%3A%20%28lampirkan%20file%29%0D%0A%0D%0AMohon%20info%20harga%20%26%20prosesnya.%20Terima%20kasih.">vanguardtape@gmail.com</a><a href="mailto:info@vanguardtape.com?subject=Pesanan%20Lakban%20Custom%20%E2%80%94%20Vanguard%20Tape&body=Halo%20Vanguard%20Tape%2C%0D%0A%0D%0ASaya%20ingin%20memesan%20lakban%20custom%20cetak%20logo.%20Berikut%20kebutuhan%20saya%3A%0D%0A%0D%0A%E2%80%A2%20Ukuran%20%2F%20lebar%20%3A%20%0D%0A%E2%80%A2%20Warna%20dasar%20%20%20%20%3A%20%0D%0A%E2%80%A2%20Jumlah%20%28dus%29%20%20%20%3A%20%0D%0A%E2%80%A2%20Logo%20%2F%20desain%20%20%3A%20%28lampirkan%20file%29%0D%0A%0D%0AMohon%20info%20harga%20%26%20prosesnya.%20Terima%20kasih.">info@vanguardtape.com</a><h4 style="margin-top:22px">Jam Kerja</h4><p style="margin:0">Senin&ndash;Jumat 08.00&ndash;16.00<br>Sabtu 08.00&ndash;12.00<br>Minggu tutup</p></div>
     </div>
     <p class="f-motto">Personalize &middot; Standout &middot; Impress</p>
     <div class="copy"><span>&copy; 2026 Vanguard Custom Printed Tape<br>PT Putra Surya Grup</span><span>Tangerang &middot; Indonesia</span></div>
@@ -787,7 +801,7 @@ footer .f-brand .brand .wm small{display:block}
   var ORDER=["72","48","36","24","18","12"];
   function rp(n){return "Rp "+Math.round(n).toLocaleString("id-ID");}
   function lenText(w){return W[w]?W[w].len.replace('m',' meter'):'';}
-  function msg(ctx){var lines=[];if(ctx==='manager'){lines.push("Halo Vanguard, saya ingin menyampaikan *kritik & saran*:");lines.push("");lines.push("(tulis pesan Anda di sini)");}else{lines.push("Halo Vanguard, saya mau tanya soal lakban custom (MOQ 1 dus). Mohon dibantu ya \ud83d\ude4f");}lines.push("");lines.push("Ref: "+(gclid?"g:"+gclid:"src:"+ctx));return lines.join("\n");}
+  function msg(ctx){var lines=[];if(ctx==='manager'){lines.push("Halo Vanguard, saya ingin menyampaikan *kritik & saran*:");lines.push("");lines.push("(tulis pesan Anda di sini)");}else{lines.push("Halo Vanguard Tape \ud83d\udc4b Saya tertarik pesan *lakban custom cetak logo*. Boleh dibantu info harga & prosesnya? \ud83d\ude4f");}return lines.join("\n");}
   document.querySelectorAll('[data-wa]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();var ctx=el.getAttribute('data-ctx')||'generic';var num=el.getAttribute('data-wa-num')||WA_NUMBER;trackWhatsApp(ctx);window.open("https://wa.me/"+num+"?text="+encodeURIComponent(msg(ctx)),"_blank");});});
   function renderPL(dus){var d=DISC[dus]||0;var body=document.getElementById('plBody');if(!body)return;var html='';ORDER.forEach(function(w){var r=W[w];function c(v){return rp(v*(1-d));}html+='<tr><td>'+w+'mm \u00d7 '+lenText(w)+'</td><td><span class="isi">'+r.rolls+' roll</span></td><td>'+c(r.bening1)+'</td><td>'+c(r.bening2)+'</td><td>'+c(r.base1)+'</td><td>'+c(r.base2)+'</td></tr>';});body.innerHTML=html;document.querySelectorAll('.disc-pick .dp').forEach(function(p){p.classList.toggle('on',p.getAttribute('data-dus')===dus);});var badge=document.getElementById('discBadge');if(badge)badge.textContent=d>0?('Hemat '+(d*100)+'%'):'Harga normal';}
   document.querySelectorAll('.disc-pick .dp').forEach(function(p){p.addEventListener('click',function(){renderPL(p.getAttribute('data-dus'));});});
@@ -808,6 +822,27 @@ footer .f-brand .brand .wm small{display:block}
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});}
 })();
 
+</script>
+<div class="imgpop" id="imgpop" aria-hidden="true"><button class="ip-x" aria-label="Tutup"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button><img alt=""><div class="ip-cap"></div></div>
+<script>
+/* image lightbox */
+(function(){
+  var pop=document.getElementById('imgpop'); if(!pop)return;
+  var pim=pop.querySelector('img'), pcap=pop.querySelector('.ip-cap');
+  function open(src,alt,cap){pim.src=src;pim.alt=alt||'';pcap.textContent=cap||'';pop.classList.add('on');pop.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+  function close(){pop.classList.remove('on');pop.setAttribute('aria-hidden','true');document.body.style.overflow='';setTimeout(function(){pim.src='';},220);}
+  document.querySelectorAll('.pf-img, .gtile img, .rs-tile img').forEach(function(img){
+    img.style.cursor='zoom-in';
+    img.addEventListener('click',function(e){
+      e.stopPropagation();
+      var cap='', c=img.parentElement&&img.parentElement.querySelector('.cap2,.gcap,.rs-cap');
+      if(c)cap=c.textContent;
+      open(img.currentSrc||img.src, img.alt, '');  /* caption hidden from zoom; kept in DOM+alt for SEO */
+    });
+  });
+  pop.addEventListener('click',function(e){ if(e.target===pim)return; close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&pop.classList.contains('on'))close(); });
+})();
 </script>
 </body>
 </html>

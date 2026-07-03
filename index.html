@@ -385,6 +385,65 @@ footer .col a:hover{color:var(--gold)}
 /* ===== Kenapa Vanguard — gold caption ===== */
 .adv .acap{display:block;font-family:var(--disp);font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:12px}
 .adv.feature .acap{color:var(--gold-deep)}
+
+/* ===== homepage portfolio carousel ===== */
+.pfc{position:relative}
+.pfc-rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 32px)/3);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-ms-overflow-style:none;scrollbar-width:none;padding-bottom:2px}
+.pfc-rail::-webkit-scrollbar{display:none}
+.pfc-item{scroll-snap-align:start;margin:0;position:relative;border-radius:16px;overflow:hidden;background:var(--black-2);aspect-ratio:4/3;border:1px solid var(--don)}
+.pfc-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in;transition:transform .35s}
+.pfc-item:hover img{transform:scale(1.05)}
+.pfc-item .cap2{position:absolute;left:12px;bottom:12px;margin:0;font-family:var(--disp);font-size:12px;letter-spacing:.04em;color:#fff;z-index:2;background:rgba(0,0,0,.42);padding:5px 11px;border-radius:100px;backdrop-filter:blur(4px)}
+.pfc-nav{position:absolute;top:calc(50% - 20px);transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(20,20,24,.82);border:1px solid var(--don);color:#fff;display:grid;place-items:center;cursor:pointer;z-index:3;transition:background .15s,color .15s;backdrop-filter:blur(6px)}
+.pfc-nav:hover{background:var(--gold);color:#111}
+.pfc-nav svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.4}
+.pfc-nav.prev{left:-6px}.pfc-nav.next{right:-6px}
+.pfc-nav[hidden]{display:none}
+.pfc-dots{display:flex;justify-content:center;gap:7px;margin-top:16px}
+.pfc-dots button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:var(--don);cursor:pointer;transition:background .2s,width .2s}
+.pfc-dots button.on{background:var(--gold);width:20px;border-radius:100px}
+@media(max-width:760px){.pfc-rail{grid-auto-columns:calc((100% - 16px)/1.35)}.pfc-nav{display:none}}
+
+/* ===== image lightbox ===== */
+.imgpop{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:rgba(8,8,10,.93);backdrop-filter:blur(6px);padding:24px;cursor:zoom-out;opacity:0;transition:opacity .2s}
+.imgpop.on{display:flex;opacity:1}
+.imgpop img{max-width:min(1100px,94vw);max-height:86vh;width:auto;height:auto;border-radius:14px;box-shadow:0 40px 100px -20px rgba(0,0,0,.85);cursor:default}
+.imgpop .ip-cap{position:absolute;left:0;right:0;bottom:20px;text-align:center;color:#fff;font-family:var(--disp);font-size:14px;letter-spacing:.03em;opacity:.92}
+.imgpop .ip-x{position:absolute;top:18px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#fff;display:grid;place-items:center;cursor:pointer;transition:background .15s}
+.imgpop .ip-x:hover{background:rgba(255,255,255,.24)}
+.imgpop .ip-x svg{width:20px;height:20px;stroke:#fff;stroke-width:2.4;fill:none}
+.gtile img,.rs-tile img{cursor:zoom-in}
+/* ==== v10 tweaks ==== */
+/* hero lede highlighted words -> CAPS */
+.hero-dark .lede b{text-transform:uppercase;font-weight:700;letter-spacing:.01em}
+/* 5-point strip: CAPS + a bit bigger */
+.hs-lb{font-size:15px;text-transform:uppercase;letter-spacing:.03em;font-weight:700}
+/* strip on mobile: show ALL 5 at once (2-col grid, no sideways scroll) */
+@media(max-width:900px){
+  .hs-row{grid-template-columns:1fr 1fr;grid-auto-flow:row;grid-auto-columns:auto;overflow:visible}
+  .hs-item{justify-content:flex-start;padding:14px 14px;border-right:1px solid rgba(255,255,255,.09);border-bottom:1px solid rgba(255,255,255,.09)}
+  .hs-item::after{display:none}
+  .hs-item:nth-child(2n){border-right:0}
+  .hs-item:last-child{grid-column:1 / -1;border-bottom:0}
+  .hs-lb{font-size:14px}
+}
+/* hero background: center image + darken veil for readable text on phones */
+@media(max-width:820px){
+  .hero-dark{background-position:center,center,center}
+  .hero-dark::after{background:linear-gradient(180deg,rgba(8,8,10,.62) 0%,rgba(8,8,10,.5) 48%,rgba(8,8,10,.76) 100%)}
+}
+/* Kenapa Vanguard: compact horizontal cards on phone (text fills left->right) */
+@media(max-width:560px){
+  .adv-grid{grid-template-columns:1fr;gap:10px}
+  .adv{display:flex;align-items:flex-start;gap:14px;padding:16px 16px}
+  .adv .ai{margin-bottom:0;flex:none}
+  .adv-tx{flex:1;min-width:0}
+  .adv h3{margin-top:2px}
+}
+/* hide keyword tags on photos (kept in DOM + alt text so Google still indexes) */
+.pfc-item .cap2{display:none}
+.pf .cap2{display:none}
+
 </style>
 
 <style>
@@ -621,11 +680,18 @@ footer{padding-bottom:20px}
       <div class="pf-htx"><div class="eyebrow">Portfolio</div><h2>Contoh hasil cetak custom</h2></div>
       <a class="pf-see" href="portfolio.html">Lihat Selengkapnya <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
-    <div class="pf-grid">
-      <div class="pf reveal"><img class="pf-img" src="lakban-custom-warna-warni-koleksi.webp" alt="Koleksi lakban custom cetak logo berbagai warna dan brand" loading="lazy" decoding="async"><span class="cap2">Ratusan brand</span></div>
-      <div class="pf reveal"><img class="pf-img" src="lakban-custom-cetak-logo-kuning.webp" alt="Rol lakban custom cetak logo full warna kuning" loading="lazy" decoding="async"><span class="cap2">Cetak logo</span></div>
-      <div class="pf reveal"><img class="pf-img" src="lakban-custom-logistik-ekspedisi-biru.webp" alt="Lakban custom cetak logo perusahaan logistik dan ekspedisi biru" loading="lazy" decoding="async"><span class="cap2">Logistik</span></div>
-      <div class="pf reveal"><img class="pf-img" src="lakban-custom-lucu-do-not-open.webp" alt="Lakban custom cetak desain Do Not Open untuk olshop" loading="lazy" decoding="async"><span class="cap2">Desain lucu</span></div>
+    <div class="pfc">
+      <button class="pfc-nav prev" aria-label="Sebelumnya" hidden><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <div class="pfc-rail" id="pfcRail">
+        <figure class="pfc-item"><img class="pf-img" src="lakban-custom-warna-warni-koleksi.webp" alt="Koleksi lakban custom cetak logo berbagai warna dan brand" loading="lazy" decoding="async"><figcaption class="cap2">Aneka warna</figcaption></figure>
+        <figure class="pfc-item"><img class="pf-img" src="lakban-custom-cetak-logo-kuning.webp" alt="Rol lakban custom cetak logo full warna kuning" loading="lazy" decoding="async"><figcaption class="cap2">Cetak logo</figcaption></figure>
+        <figure class="pfc-item"><img class="pf-img" src="lakban-custom-logistik-ekspedisi-biru.webp" alt="Lakban custom cetak logo perusahaan logistik dan ekspedisi biru" loading="lazy" decoding="async"><figcaption class="cap2">Logistik &amp; ekspedisi</figcaption></figure>
+        <figure class="pfc-item"><img class="pf-img" src="lakban-custom-handle-with-care-biru.webp" alt="Lakban custom fragile Handle With Care biru untuk pengiriman" loading="lazy" decoding="async"><figcaption class="cap2">Fragile</figcaption></figure>
+        <figure class="pfc-item"><img class="pf-img" src="lakban-custom-industri-hijau-halliburton.webp" alt="Lakban custom cetak logo perusahaan industri hijau" loading="lazy" decoding="async"><figcaption class="cap2">Industri</figcaption></figure>
+        <figure class="pfc-item"><img class="pf-img" src="lakban-custom-lucu-do-not-open.webp" alt="Lakban custom cetak desain Do Not Open untuk olshop" loading="lazy" decoding="async"><figcaption class="cap2">Olshop &amp; fashion</figcaption></figure>
+      </div>
+      <button class="pfc-nav next" aria-label="Berikutnya"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+      <div class="pfc-dots" id="pfcDots"></div>
     </div>
   </div>
 </section>
@@ -800,7 +866,7 @@ footer{padding-bottom:20px}
         <a class="f-num" href="#" data-wa data-ctx="manager" data-wa-num="6287777000286"><small>Manajer (kritik &amp; saran)</small>+62 877-7700-0286</a>
       </div>
       <div class="col"><h4>Navigasi</h4><a href="#top">Home</a><a href="produk.html">Produk</a><a href="portfolio.html">Portfolio</a><a href="tentang.html">Tentang</a><a href="kontak.html">Kontak</a></div>
-      <div class="col"><h4>Kontak Email</h4><a href="mailto:vanguardtape@gmail.com">vanguardtape@gmail.com</a><a href="mailto:info@vanguardtape.com">info@vanguardtape.com</a><h4 style="margin-top:22px">Jam Kerja</h4><p style="margin:0">Senin&ndash;Jumat 08.00&ndash;16.00<br>Sabtu 08.00&ndash;12.00<br>Minggu tutup</p></div>
+      <div class="col"><h4>Kontak Email</h4><a href="mailto:vanguardtape@gmail.com?subject=Pesanan%20Lakban%20Custom%20%E2%80%94%20Vanguard%20Tape&body=Halo%20Vanguard%20Tape%2C%0D%0A%0D%0ASaya%20ingin%20memesan%20lakban%20custom%20cetak%20logo.%20Berikut%20kebutuhan%20saya%3A%0D%0A%0D%0A%E2%80%A2%20Ukuran%20%2F%20lebar%20%3A%20%0D%0A%E2%80%A2%20Warna%20dasar%20%20%20%20%3A%20%0D%0A%E2%80%A2%20Jumlah%20%28dus%29%20%20%20%3A%20%0D%0A%E2%80%A2%20Logo%20%2F%20desain%20%20%3A%20%28lampirkan%20file%29%0D%0A%0D%0AMohon%20info%20harga%20%26%20prosesnya.%20Terima%20kasih.">vanguardtape@gmail.com</a><a href="mailto:info@vanguardtape.com?subject=Pesanan%20Lakban%20Custom%20%E2%80%94%20Vanguard%20Tape&body=Halo%20Vanguard%20Tape%2C%0D%0A%0D%0ASaya%20ingin%20memesan%20lakban%20custom%20cetak%20logo.%20Berikut%20kebutuhan%20saya%3A%0D%0A%0D%0A%E2%80%A2%20Ukuran%20%2F%20lebar%20%3A%20%0D%0A%E2%80%A2%20Warna%20dasar%20%20%20%20%3A%20%0D%0A%E2%80%A2%20Jumlah%20%28dus%29%20%20%20%3A%20%0D%0A%E2%80%A2%20Logo%20%2F%20desain%20%20%3A%20%28lampirkan%20file%29%0D%0A%0D%0AMohon%20info%20harga%20%26%20prosesnya.%20Terima%20kasih.">info@vanguardtape.com</a><h4 style="margin-top:22px">Jam Kerja</h4><p style="margin:0">Senin&ndash;Jumat 08.00&ndash;16.00<br>Sabtu 08.00&ndash;12.00<br>Minggu tutup</p></div>
     </div>
     <p class="f-motto">Personalize &middot; Standout &middot; Impress</p>
     <div class="copy"><span>&copy; 2026 Vanguard Custom Printed Tape<br>PT Putra Surya Grup</span><span>Tangerang &middot; Indonesia</span></div>
@@ -845,7 +911,7 @@ footer{padding-bottom:20px}
   function render(){var perEl=document.getElementById('perroll'),rowsEl=document.getElementById('estRows'),tb=document.getElementById('estTotal'),tv=document.getElementById('totalVal'),lenEl=document.getElementById('lenAuto');if(lenEl&&s.w)lenEl.textContent=lenText(s.w);if(!ready()){perEl.innerHTML='— <small>/roll</small>';rowsEl.innerHTML='<div class="ph-msg">Pilih spesifikasi untuk melihat estimasi.</div>';tb.style.display='none';return;}var c=calc();perEl.innerHTML=rp(c.per)+' <small>/roll</small>';var h='';h+=rrow('Ukuran',s.w+'mm × '+lenText(s.w));h+=rrow('Warna dasar',s.base+(s.baseType==='bening'?' (Bening)':' (Base)'));h+=rrow('Cetak',s.print+' warna');h+=rrow('Jumlah',s.qty+' dus · '+c.tr.toLocaleString('id-ID')+' roll');h+=rrow('Harga normal',rp(c.unit)+'/roll');if(c.d>0)h+=rrow('Diskon','−'+(c.d*100)+'%',true);rowsEl.innerHTML=h;tv.textContent=rp(c.total);tb.style.display='block';}
   render();
 
-  function msg(ctx){var lines=[];if(ctx==='calculator'&&ready()){var c=calc();lines.push("Halo Vanguard, saya mau *minta penawaran* lakban custom:");lines.push("• Lebar: "+s.w+"mm × "+lenText(s.w));lines.push("• Warna dasar: "+s.base+(s.baseType==='bening'?' (Bening)':' (Base)'));lines.push("• Warna cetak: "+s.print+" warna");lines.push("• Jumlah: "+s.qty+" dus ("+c.tr.toLocaleString('id-ID')+" roll)");lines.push("• Tebal: 45 mikron");lines.push("");lines.push("Estimasi: "+rp(c.per)+"/roll — Total "+rp(c.total)+(c.d>0?" (diskon "+(c.d*100)+"%)":""));lines.push("Mohon konfirmasi harga final & proses. Terima kasih 🙏");}else if(ctx==='manager'){lines.push("Halo Vanguard, saya ingin menyampaikan *kritik & saran*:");lines.push("");lines.push("(tulis pesan Anda di sini)");}else{lines.push("Halo Vanguard, saya mau tanya soal lakban custom (MOQ 1 dus). Mohon dibantu ya 🙏");}lines.push("");lines.push("Ref: "+(gclid?"g:"+gclid:"src:"+ctx));return lines.join("\n");}
+  function msg(ctx){var lines=[];if(ctx==='calculator'&&ready()){var c=calc();lines.push("Halo Vanguard, saya mau *minta penawaran* lakban custom:");lines.push("• Lebar: "+s.w+"mm × "+lenText(s.w));lines.push("• Warna dasar: "+s.base+(s.baseType==='bening'?' (Bening)':' (Base)'));lines.push("• Warna cetak: "+s.print+" warna");lines.push("• Jumlah: "+s.qty+" dus ("+c.tr.toLocaleString('id-ID')+" roll)");lines.push("• Tebal: 45 mikron");lines.push("");lines.push("Estimasi: "+rp(c.per)+"/roll — Total "+rp(c.total)+(c.d>0?" (diskon "+(c.d*100)+"%)":""));lines.push("Mohon konfirmasi harga final & proses. Terima kasih 🙏");}else if(ctx==='manager'){lines.push("Halo Vanguard, saya ingin menyampaikan *kritik & saran*:");lines.push("");lines.push("(tulis pesan Anda di sini)");}else{lines.push("Halo Vanguard Tape 👋 Saya tertarik pesan *lakban custom cetak logo*. Boleh dibantu info harga & prosesnya? 🙏");}return lines.join("\n");}
   document.querySelectorAll('[data-wa]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();var ctx=el.getAttribute('data-ctx')||'generic';var num=el.getAttribute('data-wa-num')||WA_NUMBER;trackWhatsApp(ctx);window.open("https://wa.me/"+num+"?text="+encodeURIComponent(msg(ctx)),"_blank");});});
 
   /* ---- belts, menu, reveal ---- */
@@ -857,6 +923,49 @@ footer{padding-bottom:20px}
 
   /* 3D tape roll removed — hero now uses a background image */
 
+})();
+</script>
+<div class="imgpop" id="imgpop" aria-hidden="true"><button class="ip-x" aria-label="Tutup"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button><img alt=""><div class="ip-cap"></div></div>
+<script>
+/* image lightbox */
+(function(){
+  var pop=document.getElementById('imgpop'); if(!pop)return;
+  var pim=pop.querySelector('img'), pcap=pop.querySelector('.ip-cap');
+  function open(src,alt,cap){pim.src=src;pim.alt=alt||'';pcap.textContent=cap||'';pop.classList.add('on');pop.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+  function close(){pop.classList.remove('on');pop.setAttribute('aria-hidden','true');document.body.style.overflow='';setTimeout(function(){pim.src='';},220);}
+  document.querySelectorAll('.pf-img, .gtile img, .rs-tile img').forEach(function(img){
+    img.style.cursor='zoom-in';
+    img.addEventListener('click',function(e){
+      e.stopPropagation();
+      var cap='', c=img.parentElement&&img.parentElement.querySelector('.cap2,.gcap,.rs-cap');
+      if(c)cap=c.textContent;
+      open(img.currentSrc||img.src, img.alt, '');  /* caption hidden from zoom; kept in DOM+alt for SEO */
+    });
+  });
+  pop.addEventListener('click',function(e){ if(e.target===pim)return; close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&pop.classList.contains('on'))close(); });
+})();
+</script>
+<script>
+/* homepage portfolio carousel */
+(function(){
+  var rail=document.getElementById('pfcRail'); if(!rail)return;
+  var items=rail.querySelectorAll('.pfc-item');
+  var dotsWrap=document.getElementById('pfcDots');
+  var prev=document.querySelector('.pfc-nav.prev'), next=document.querySelector('.pfc-nav.next');
+  function iw(){return items[0].getBoundingClientRect().width+16;}
+  function buildDots(){dotsWrap.innerHTML=''; var pv=Math.max(1,Math.round(rail.clientWidth/iw())); var n=Math.max(1,items.length-pv+1);
+    for(var i=0;i<n;i++){var b=document.createElement('button'); b.setAttribute('aria-label','Slide '+(i+1));
+      (function(idx){b.addEventListener('click',function(){rail.scrollTo({left:idx*iw(),behavior:'smooth'});});})(i); dotsWrap.appendChild(b);} }
+  function update(){var idx=Math.round(rail.scrollLeft/iw()); var ds=dotsWrap.children;
+    for(var i=0;i<ds.length;i++)ds[i].classList.toggle('on',i===idx);
+    if(prev)prev.hidden=rail.scrollLeft<8;
+    if(next)next.hidden=rail.scrollLeft>(rail.scrollWidth-rail.clientWidth-8);}
+  if(prev)prev.addEventListener('click',function(){rail.scrollBy({left:-iw(),behavior:'smooth'});});
+  if(next)next.addEventListener('click',function(){rail.scrollBy({left:iw(),behavior:'smooth'});});
+  rail.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',function(){buildDots();update();});
+  buildDots();update();
 })();
 </script>
 </body>
