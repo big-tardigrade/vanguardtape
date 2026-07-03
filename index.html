@@ -581,6 +581,24 @@ footer{padding-bottom:20px}
 .pf-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .pf .cap2{left:10px;bottom:10px}
 @media(max-width:640px){.pf-grid{grid-template-columns:1fr}}
+/* ==== v11 mobile fixes ==== */
+/* HERO: breathing room on phones so words don't touch the edges */
+@media(max-width:560px){
+  .hero-dark .wrap.hero-inner{padding-left:20px;padding-right:20px}
+  .hero-dark h1{font-size:33px;line-height:1.07}
+  .hero-dark .lede{font-size:15.5px}
+}
+/* KENAPA VANGUARD: 1 col, icon floated left, description flows full width -> shorter cards */
+@media(max-width:560px){
+  #keunggulan .adv-grid{grid-template-columns:1fr;gap:11px}
+  #keunggulan .adv{display:flow-root;padding:15px 17px}
+  #keunggulan .adv .ai{float:left;width:44px;height:44px;margin:2px 13px 2px 0}
+  #keunggulan .adv .adv-tx{min-width:0}
+  #keunggulan .adv .acap{display:block;margin-bottom:1px}
+  #keunggulan .adv h3{margin:0 0 5px}
+  #keunggulan .adv p{margin:0}
+}
+
 </style>
 </head>
 <body>

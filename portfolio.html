@@ -637,6 +637,10 @@ footer .f-brand .brand .wm small{display:block}
 /* hide keyword tags on gallery photos (kept in DOM + alt text so Google still indexes) */
 .gcap{display:none}
 
+/* ==== v11 mobile fixes ==== */
+/* GALLERY: dense packing so a later tile fills the lonely half-slot (no empty space) */
+@media(max-width:820px){ .gal{grid-auto-flow:dense} }
+
 </style>
 </head>
 <body>
