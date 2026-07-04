@@ -237,13 +237,23 @@ header{position:sticky;top:0;z-index:70;background:rgba(11,11,13,.9);backdrop-fi
 .node:not(:last-child)::after{content:"";position:absolute;top:38px;left:calc(50% + 46px);right:calc(-50% + 46px);height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 15px);z-index:1}
 @media(max-width:820px){.node{padding:0 0 34px}.node:not(:last-child)::after{top:76px;bottom:0;left:38px;right:auto;width:2px;height:auto;background:repeating-linear-gradient(180deg,var(--gold) 0 8px,transparent 8px 15px)}.node .step-n{right:auto;left:calc(50% + 22px)}}
 
-/* testimonials */
-.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-@media(max-width:820px){.t-grid{grid-template-columns:1fr}}
-.tcard{background:var(--surface);border:1px solid var(--line-2);border-radius:18px;padding:26px}
-.tcard .stars{color:var(--gold);font-size:14px;letter-spacing:3px;margin-bottom:14px}
-.tcard p{font-size:15px;color:var(--ink);margin:0 0 18px;line-height:1.6}
-.tcard .who{font-family:var(--disp);font-size:13px;color:var(--muted)}.tcard .who b{color:var(--ink);font-weight:600}
+/* testimonials — real Shopee review screenshots */
+.rvw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(236px,1fr));gap:16px;align-items:start}
+.rvw{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:9px;box-shadow:0 18px 42px -32px rgba(11,11,13,.55)}
+.rvw-shot{border-radius:11px;overflow:hidden;border:1px solid var(--line-2);background:#fff}
+.rvw-shot img{width:100%;display:block}
+.rvw-tag{position:absolute;top:15px;right:15px;display:inline-flex;align-items:center;gap:5px;background:#EE4D2D;color:#fff;font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.02em;padding:4px 9px 4px 7px;border-radius:20px;box-shadow:0 7px 15px -6px rgba(238,77,45,.75)}
+.rvw-tag svg{width:12px;height:12px;fill:#fff}
+.rvw-verify{text-align:center;margin-top:26px}
+.rvw-verify a{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:600;font-size:14.5px;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:30px;padding:11px 21px;transition:border-color .18s,color .18s}
+.rvw-verify a:hover{color:#EE4D2D;border-color:rgba(238,77,45,.45)}
+.rvw-verify a svg{width:16px;height:16px}
+.rvw-verify .sp{color:#EE4D2D;font-weight:700}
+@media(max-width:560px){
+  .rvw-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -24px;padding:2px 24px 14px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .rvw-grid::-webkit-scrollbar{display:none}
+  .rvw{flex:0 0 79%;scroll-snap-align:center}
+}
 
 /* FAQ (compressed, 2-col) */
 .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;max-width:980px}
@@ -518,8 +528,9 @@ footer{padding-bottom:20px}
 .logo-marquee{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
 .lm-track{display:flex;gap:18px;width:max-content;animation:lmslide 34s linear infinite}
 .logo-marquee:hover .lm-track{animation-play-state:paused}
-.lm-item{flex:none;height:64px;width:150px;border:1px solid var(--line);border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--faint);font-family:var(--disp);font-weight:700;font-size:12px;letter-spacing:.14em}
-.lm-item img{max-height:40px;max-width:78%;object-fit:contain}
+.lm-head{text-align:center;font-family:var(--disp);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
+.lm-item{flex:none;height:76px;width:186px;border:1px solid var(--line-2);border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;padding:0 22px}
+.lm-item img{max-height:40px;max-width:100%;width:auto;object-fit:contain}
 @keyframes lmslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.lm-track{animation:none}}
 /* portfolio see-more */
@@ -813,19 +824,21 @@ footer{padding-bottom:20px}
 <!-- ===== KATA PELANGGAN + LOGO CAROUSEL ===== -->
 <section id="testimoni" class="testi-sec">
   <div class="wrap">
-    <div class="head center reveal"><div class="eyebrow">Kata Pelanggan</div><h2>Brand yang sudah tampil beda</h2></div>
-    <div class="t-grid">
-      <div class="tcard reveal"><div class="stars">★★★★★</div><p>Kemasan kami jadi jauh lebih rapi dan brand makin dikenal. Desainnya dibantu dari nol, hasilnya sesuai ekspektasi. Responsnya cepat banget.</p><div class="who"><b>Rani</b> · Owner Toko Online Fashion</div></div>
-      <div class="tcard reveal"><div class="stars">★★★★★</div><p>Pesan 48mm untuk packing gudang. Lemnya kuat, cetakannya tajam, pengiriman ke luar kota aman. Sudah langganan beberapa kali.</p><div class="who"><b>Hendra</b> · Manajer Operasional Distributor</div></div>
-      <div class="tcard reveal"><div class="stars">★★★★★</div><p>Awalnya ragu karena cuma butuh sedikit, ternyata MOQ-nya cuma 1 dus. Pas banget buat cafe kami dan warnanya sesuai brand.</p><div class="who"><b>Dimas</b> · Owner Coffee Shop</div></div>
+    <div class="head center reveal"><div class="eyebrow">Kata Pelanggan</div><h2>Bukti nyata dari pembeli kami</h2></div>
+    <div class="rvw-grid">
+      <figure class="rvw reveal"><span class="rvw-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Shopee</span><div class="rvw-shot"><img src="rev-moq-orderlagi.webp" width="727" height="722" alt="Ulasan Shopee bintang 5 — CS sangat membantu, produksi cepat, dan MOQ paling kecil dibanding toko lain; pembeli akan order lagi. Produk: Lakban Custom Logo 48mm." loading="lazy" decoding="async"></div></figure>
+      <figure class="rvw reveal"><span class="rvw-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Shopee</span><div class="rvw-shot"><img src="rev-bantudesign-chat.webp" width="727" height="736" alt="Ulasan Shopee bintang 5 — kualitas dan warna lakban custom bagus, admin bantu desain dan balas chat dengan cepat. Produk: Lakban Custom 48mm 72 roll." loading="lazy" decoding="async"></div></figure>
+      <figure class="rvw reveal"><span class="rvw-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Shopee</span><div class="rvw-shot"><img src="rev-responsif-cetakbagus.webp" width="727" height="564" alt="Ulasan Shopee bintang 5 — seller responsif, membantu proses desain lakban, hasil cetak sangat bagus sesuai desain. Produk: Lakban Custom Logo 48mm." loading="lazy" decoding="async"></div></figure>
+      <figure class="rvw reveal"><span class="rvw-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Shopee</span><div class="rvw-shot"><img src="rev-repeat-icecafe.webp" width="727" height="576" alt="Ulasan Shopee bintang 5 — pelanggan sudah beberapa kali order lakban isolasi custom, hasil memuaskan sesuai pesanan untuk brand ICECAFE." loading="lazy" decoding="async"></div></figure>
     </div>
+    <div class="rvw-verify"><a href="https://shopee.co.id/vanguardtape" target="_blank" rel="noopener">Semua ulasan asli dari toko <span class="sp">Shopee</span> kami — cek langsung <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
   </div>
   <div class="lm-wrap reveal">
+    <div class="lm-head">Telah dipercaya oleh</div>
     <div class="logo-marquee">
       <div class="lm-track">
-        <!-- Ganti tiap chip: <div class="lm-item"><img src="logos/nama.png" alt="Nama Brand"></div> -->
-        <div class="lm-item">LOGO</div><div class="lm-item">LOGO</div><div class="lm-item">LOGO</div><div class="lm-item">LOGO</div><div class="lm-item">LOGO</div><div class="lm-item">LOGO</div><div class="lm-item">LOGO</div><div class="lm-item">LOGO</div>
-        <div class="lm-item" aria-hidden="true">LOGO</div><div class="lm-item" aria-hidden="true">LOGO</div><div class="lm-item" aria-hidden="true">LOGO</div><div class="lm-item" aria-hidden="true">LOGO</div><div class="lm-item" aria-hidden="true">LOGO</div><div class="lm-item" aria-hidden="true">LOGO</div><div class="lm-item" aria-hidden="true">LOGO</div><div class="lm-item" aria-hidden="true">LOGO</div>
+        <div class="lm-item"><img src="logo-gojek.webp" alt="Gojek" loading="lazy" decoding="async"></div><div class="lm-item"><img src="logo-grab.webp" alt="Grab" loading="lazy" decoding="async"></div><div class="lm-item"><img src="logo-telkomsel.webp" alt="Telkomsel" loading="lazy" decoding="async"></div><div class="lm-item"><img src="logo-indomobil.webp" alt="Indomobil" loading="lazy" decoding="async"></div><div class="lm-item"><img src="logo-pln.webp" alt="PLN" loading="lazy" decoding="async"></div><div class="lm-item"><img src="logo-cpfood.webp" alt="Charoen Pokphand Indonesia" loading="lazy" decoding="async"></div><div class="lm-item"><img src="logo-hmns.webp" alt="HMNS" loading="lazy" decoding="async"></div>
+        <div class="lm-item" aria-hidden="true"><img src="logo-gojek.webp" alt="" loading="lazy" decoding="async"></div><div class="lm-item" aria-hidden="true"><img src="logo-grab.webp" alt="" loading="lazy" decoding="async"></div><div class="lm-item" aria-hidden="true"><img src="logo-telkomsel.webp" alt="" loading="lazy" decoding="async"></div><div class="lm-item" aria-hidden="true"><img src="logo-indomobil.webp" alt="" loading="lazy" decoding="async"></div><div class="lm-item" aria-hidden="true"><img src="logo-pln.webp" alt="" loading="lazy" decoding="async"></div><div class="lm-item" aria-hidden="true"><img src="logo-cpfood.webp" alt="" loading="lazy" decoding="async"></div><div class="lm-item" aria-hidden="true"><img src="logo-hmns.webp" alt="" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </div>
