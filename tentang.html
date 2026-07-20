@@ -601,6 +601,9 @@ footer .f-brand .brand .wm small{display:block}
 .t-figure .ph-in svg{width:44px;height:44px;stroke:var(--gold-deep);fill:none;stroke-width:1.5;margin:0 auto 12px;display:block}
 .t-figure .ph-in b{font-family:var(--disp);font-size:14px;color:var(--ink-2);display:block}
 .t-figure .ph-in span{font-size:12.5px;color:var(--muted)}
+.t-figure--photo{aspect-ratio:3/4;background:var(--black-2)}
+.t-figure--photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.t-figcap{position:absolute;left:14px;bottom:12px;z-index:2;font-family:var(--disp);font-size:12px;letter-spacing:.04em;color:#fff;background:rgba(0,0,0,.42);padding:5px 12px;border-radius:100px;backdrop-filter:blur(4px)}
 
 /* brands */
 .t-brands{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
@@ -737,13 +740,11 @@ footer .f-brand .brand .wm small{display:block}
         <p>Vanguard berdiri pada <b>2024</b>, fokus penuh pada <b>custom printed tape</b> &mdash; lakban cetak logo BOPP untuk brand, toko, dan bisnis. Semuanya kami produksi sendiri di dalam negeri, jadi Anda tak perlu menunggu impor yang lama dan merepotkan.</p>
         <p>Kami bagian dari <b>PT Putra Surya Grup</b> (sejak 2022), dengan mesin terkalibrasi, kontrol kualitas ketat, dan stok yang konsisten &mdash; supply lokal yang tepercaya dan selalu ada saat Anda butuh cepat.</p>
       </div>
-      <div class="t-figure ph" aria-label="Foto pabrik segera">
-        <div class="ph-in">
-          <svg viewBox="0 0 24 24"><path d="M3 21h18M4 21V8l6-4v4l6-4v17M9 12h1M9 16h1M14 12h1M14 16h1"/></svg>
-          <b>Produksi Lokal Indonesia</b>
-          <span>Foto pabrik segera</span>
-        </div>
-      </div>
+      <figure class="t-figure t-figure--photo" aria-label="Pabrik Vanguard Tape di Tangerang">
+        <img src="/pabrik-vanguard.webp" width="900" height="1200" loading="lazy" decoding="async"
+             alt="Pabrik Vanguard Tape, produsen lakban custom BOPP di Tangerang">
+        <figcaption class="t-figcap">Pabrik kami di Tangerang</figcaption>
+      </figure>
     </div>
     <div class="t-brands reveal">
       <div class="brandc vg">
